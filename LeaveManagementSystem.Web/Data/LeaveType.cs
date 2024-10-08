@@ -6,6 +6,7 @@ namespace LeaveManagementSystem.Web.Data
     {
         [Key]
         public int Id { get; set; }
+        [MaxLength(150)]
         public string LeaveTypeName { get; set; }
         public int NumberOfDays { get; set; }
     }

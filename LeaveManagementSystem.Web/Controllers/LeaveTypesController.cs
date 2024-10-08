@@ -21,11 +21,9 @@ namespace LeaveManagementSystem.Web.Controllers
         // GET: LeaveTypes
         public async Task<IActionResult> Index()
         {
-                
-              // var data = SELECT * FROM LeaveTypes
-              return _context.LeaveTypes != null ? 
-                          View(await _context.LeaveTypes.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.LeaveTypes'  is null.");
+            // var data = SELECT * FROM LeaveTypes
+            var data = await _context.LeaveTypes.ToListAsync();
+            return View(data);
         }
 
         // GET: LeaveTypes/Details/5
@@ -36,8 +34,10 @@ namespace LeaveManagementSystem.Web.Controllers
                 return NotFound();
             }
 
+            // Paramterization - Key for preventing SQL Injection attacks 
+            // Select * from LeaveTypes WHERE Id = @id
             var leaveType = await _context.LeaveTypes
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.Id == id); // m represents each record in the LeaveType Object in the table 
             if (leaveType == null)
             {
                 return NotFound();
