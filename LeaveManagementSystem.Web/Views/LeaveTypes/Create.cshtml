@@ -1,4 +1,4 @@
-﻿@model LeaveManagementSystem.Web.Data.LeaveType
+﻿@model LeaveTypeCreateVM;
 
 @{
     ViewData["Title"] = "Create";
@@ -21,6 +21,7 @@
                 <input asp-for="NumberOfDays" class="form-control" />
                 <span asp-validation-for="NumberOfDays" class="text-danger"></span>
             </div>
+            <input type="hidden" name="Id" value=12></input>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-success" />
                 <a asp-action="Index" class="btn btn-primary">Back to List</a>

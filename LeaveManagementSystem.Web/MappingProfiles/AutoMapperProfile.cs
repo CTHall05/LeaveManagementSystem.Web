@@ -8,11 +8,11 @@ namespace LeaveManagementSystem.Web.MappingProfiles
     {
         public AutoMapperProfile()
         {
-            CreateMap<LeaveType, IndexVM>();
-                //.ForMember(dest => dest.Days, opt => opt.MapFrom(src => src.NumberOfDays)); This is the case where one of the propertys name does not match the destination name
-                // This commented way can cause a performance cost
+            CreateMap<LeaveType, LeaveTypeReadOnlyVM>();
+            //.ForMember(dest => dest.Days, opt => opt.MapFrom(src => src.NumberOfDays)); This is the case where one of the propertys name does not match the destination name
+            // This commented way can cause a performance cost
+            CreateMap<LeaveTypeCreateVM, LeaveType>();
+            CreateMap<LeaveTypeEditVM, LeaveType>().ReverseMap();
         }
-
-
     }
 }
